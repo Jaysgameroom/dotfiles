@@ -11,7 +11,7 @@ compinit
 
 alias ls='ls --color=auto'
 
-export PS1="%n@%m > %~ "
+export PROMPT="%@::%B%F{green}%n@%m%f%b > %~ %# "
 
 autoload -Uz tetriscurses
 
