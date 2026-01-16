@@ -10,7 +10,10 @@ vim.g.mapleader = ' '
 
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>m', ':update<CR>, :make<CR>')
-vim.keymap.set('n', '<leader>f', ':FzfLua files<CR>')
+
+vim.keymap.set('n', '<leader>fc', ':cd ~/code<CR> :FzfLua files<CR>')
+vim.keymap.set('n', '<leader>f`', ':cd ~/.config<CR> :FzfLua files<CR>')
+
 vim.keymap.set('n', '<leader>mm', ':Mason<CR>')
 vim.keymap.set('n', '<leader>c', ':close<CR>')
 vim.keymap.set('n', '<leader>s', ':split<CR>')
@@ -28,6 +31,8 @@ vim.pack.add({
 	{src = "https://github.com/nvim-mini/mini.icons.git"},
 	{src = "https://github.com/nvim-treesitter/nvim-treesitter.git"},
 	{src = "https://github.com/ibhagwan/fzf-lua.git"},
+	{src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git"},
+	{src = "https://github.com/lewis6991/gitsigns.nvim.git"},
 	{src = "https://github.com/brenoprata10/nvim-highlight-colors.git"},
 })
 
@@ -38,8 +43,19 @@ require("mini.icons").setup()
 require("fzf-lua").setup()
 require("nvim-highlight-colors").setup()
 require("nvim-treesitter").setup()
+require("gitsigns").setup()
+require("render-markdown").setup({
+	heading = { backgrounds = {
+		'GruvboxAquaSign',
+		'GruvboxGreenSign',
+		'GruvboxRedSign',
+		'GruvboxPurpleSign',
+		'GruvboxPurpleSign',
+		'GruvboxPurpleSign',
+	}},
+})
 
-vim.lsp.enable({"clangd", "pylsp", "jdtls"})
+vim.lsp.enable({"html", "cssls", "tsserver"})
 
 vim.cmd("colorscheme gruvbox")
 vim.cmd("set background=dark")
