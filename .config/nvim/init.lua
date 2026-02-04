@@ -95,7 +95,3 @@ vim.lsp.enable({"glsl_analyzer", "clangd", "intelephense", "ts_ls", "html", "css
 vim.cmd("set background=dark")
 
 vim.cmd[[set completeopt+=menuone,noselect,popup]]
-
-
-
-
