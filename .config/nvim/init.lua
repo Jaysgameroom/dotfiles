@@ -31,6 +31,7 @@ vim.keymap.set('n', '<leader>5', ':colorscheme tokyonight<CR>')
 vim.keymap.set('n', '<leader>6', ':colorscheme everforest<CR>')
 vim.keymap.set('n', '<leader>7', ':colorscheme nord<CR>')
 vim.keymap.set('n', '<leader>8', ':colorscheme monokai<CR>')
+vim.keymap.set('n', '<leader>9', ':colorscheme vscode<CR>')
 
 
 vim.pack.add({
@@ -65,7 +66,8 @@ vim.pack.add({
 	{src = "https://github.com/sainnhe/everforest.git"},
 	{src = "https://github.com/shaunsingh/nord.nvim.git"},
 	{src = "https://github.com/tanvirtin/monokai.nvim.git"},
-
+	{src = "https://github.com/Mofiqul/vscode.nvim.git"},
+		--git-signs
 	{src = "https://github.com/lewis6991/gitsigns.nvim.git"},
 })
 
@@ -79,7 +81,7 @@ require("gitsigns").setup()
 
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
-	fuzzy = {implementation = "lua"}
+	fuzzy = {implementation = "lua"},
 })
 
 require("mini.icons").setup({
@@ -90,8 +92,9 @@ require("mini.icons").setup({
 })
 
 
-vim.lsp.enable({"glsl_analyzer", "clangd", "intelephense", "ts_ls", "html", "cssls", "gdscript"})
+vim.lsp.enable({"rust_analyzer", "glsl_analyzer", "clangd", "intelephense", "ts_ls", "html", "cssls", "gdscript"})
 
 vim.cmd("set background=dark")
+vim.cmd("colorscheme gruvbox")
 
 vim.cmd[[set completeopt+=menuone,noselect,popup]]
