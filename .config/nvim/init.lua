@@ -22,6 +22,7 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 vim.keymap.set('n', '<leader>gs', ':update<CR> :source<CR>')
 vim.keymap.set('n', '<leader>`', ':e ~/.config/nvim/init.lua<CR>')
+vim.keymap.set('n', '<leader>ahhhh', ':CellularAutomaton make-it_rain<CR>')
 
 vim.keymap.set('n', '<leader>1', ':colorscheme gruvbox<CR>')
 vim.keymap.set('n', '<leader>2', ':colorscheme kanagawa<CR>')
@@ -32,6 +33,7 @@ vim.keymap.set('n', '<leader>6', ':colorscheme everforest<CR>')
 vim.keymap.set('n', '<leader>7', ':colorscheme nord<CR>')
 vim.keymap.set('n', '<leader>8', ':colorscheme monokai<CR>')
 vim.keymap.set('n', '<leader>9', ':colorscheme vscode<CR>')
+
 
 
 vim.pack.add({
@@ -85,6 +87,7 @@ vim.pack.add({
 
 	--Fun
 	{src = "https://github.com/Eandrju/cellular-automaton.nvim.git"},
+	{src = "https://github.com/rafamadriz/friendly-snippets.git"},
 })
 
 
