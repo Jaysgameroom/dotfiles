@@ -22,7 +22,8 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
 vim.keymap.set('n', '<leader>gs', ':update<CR> :source<CR>')
 vim.keymap.set('n', '<leader>`', ':e ~/.config/nvim/init.lua<CR>')
-vim.keymap.set('n', '<leader>ahhhh', ':CellularAutomaton make-it_rain<CR>')
+vim.keymap.set('n', '<leader>rain', ':CellularAutomaton make_it_rain<CR>')
+vim.keymap.set('n', '<leader>scram', ':CellularAutomaton scramble<CR>')
 
 vim.keymap.set('n', '<leader>1', ':colorscheme gruvbox<CR>')
 vim.keymap.set('n', '<leader>2', ':colorscheme kanagawa<CR>')
@@ -39,8 +40,6 @@ vim.keymap.set('n', '<leader>9', ':colorscheme vscode<CR>')
 vim.pack.add({
 
 	--Navigation
-		--?
-	{src = "https://github.com/folke/flash.nvim.git"},
 		--file explorer
 	{src = "https://github.com/stevearc/oil.nvim.git"},
 		--fuzzy find
@@ -88,6 +87,8 @@ vim.pack.add({
 	--Fun
 	{src = "https://github.com/Eandrju/cellular-automaton.nvim.git"},
 	{src = "https://github.com/rafamadriz/friendly-snippets.git"},
+	{src = "https://github.com/windwp/nvim-ts-autotag.git"},
+	{src = "https://github.com/karb94/neoscroll.nvim.git"},
 })
 
 
@@ -100,14 +101,18 @@ require("nvim-treesitter").setup()
 require("gitsigns").setup()
 require("mini.surround").setup()
 require("fidget").setup()
+require("nvim-ts-autotag").setup()
+require("neoscroll").setup({duration_multiplier= 0.3, easing = 'sine'})
 
 
-ftypes = {'cpp', 'javascript', 'lua', "java"}
+ftypes = {'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
 
 require("nvim-treesitter").setup()
 require("nvim-treesitter").install(ftypes)
 
 vim.o.syntax = off
+
+
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = ftypes,
@@ -118,7 +123,6 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 
-require("flash").setup()
 
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
@@ -134,7 +138,6 @@ require("mini.icons").setup({
 
 require("gruvbox").setup({
 	contrast = "",
-	transparent_mode = false
 })
 
 vim.diagnostic.config({
@@ -182,4 +185,3 @@ vim.keymap.set("n", "<leader>a", function()
   require("nvim-treesitter-textobjects.swap").swap_next "@function.outer"
 end)
 
-vim.keymap.set("n", "zf", function() require("flash").jump() end )
