@@ -58,7 +58,6 @@ vim.pack.add({
 		--color highlighting
 	{src = "https://github.com/brenoprata10/nvim-highlight-colors.git"},
 		--colorschemes
-	{src = "https://github.com/morhetz/gruvbox"},
 	{src = "https://github.com/rebelot/kanagawa.nvim.git"},
 	{src = "https://github.com/joshdick/onedark.vim.git"},
 	{src = "https://github.com/catppuccin/nvim.git"},
@@ -67,8 +66,10 @@ vim.pack.add({
 	{src = "https://github.com/shaunsingh/nord.nvim.git"},
 	{src = "https://github.com/tanvirtin/monokai.nvim.git"},
 	{src = "https://github.com/Mofiqul/vscode.nvim.git"},
+	{src = "https://github.com/ellisonleao/gruvbox.nvim.git"},
 		--git-signs
 	{src = "https://github.com/lewis6991/gitsigns.nvim.git"},
+	{src = "https://github.com/folke/flash.nvim.git"},
 })
 
 require("nvim-autopairs").setup()
@@ -78,6 +79,8 @@ require("fzf-lua").setup()
 require("nvim-highlight-colors").setup()
 require("nvim-treesitter").setup()
 require("gitsigns").setup()
+require("flash").setup()
+require("flash").treesitter()
 
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
@@ -91,8 +94,12 @@ require("mini.icons").setup({
 	}	
 })
 
+require("gruvbox").setup({
+	contrast = "",
+	transparent_mode = false
+})
 
-vim.lsp.enable({"rust_analyzer", "glsl_analyzer", "clangd", "intelephense", "ts_ls", "html", "cssls", "gdscript"})
+vim.lsp.enable({"rust_analyzer", "clangd", "intelephense", "ts_ls", "html", "cssls"})
 
 vim.cmd("set background=dark")
 vim.cmd("colorscheme gruvbox")
