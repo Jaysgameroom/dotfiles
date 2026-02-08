@@ -36,14 +36,22 @@ vim.keymap.set('n', '<leader>9', ':colorscheme vscode<CR>')
 
 vim.pack.add({
 
-	--Workflow
+	--Navigation
+		--?
+	{src = "https://github.com/folke/flash.nvim.git"},
 		--file explorer
 	{src = "https://github.com/stevearc/oil.nvim.git"},
-		--autocomplete
-	{src = "https://github.com/saghen/blink.cmp.git"},
 		--fuzzy find
 	{src = "https://github.com/ibhagwan/fzf-lua.git"},
+		--treesitter stuff
+	{src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git"},
+
+	--Editing
+		--autocomplete
+	{src = "https://github.com/saghen/blink.cmp.git"},
+		--autpairs
 	{src = "https://github.com/windwp/nvim-autopairs.git"},
+
 
 	--Parsing
 		--lsp
@@ -51,6 +59,8 @@ vim.pack.add({
 	{src = "https://github.com/neovim/nvim-lspconfig.git"},
 		--treesitter
 	{src = "https://github.com/nvim-treesitter/nvim-treesitter.git"},
+
+	{src = "https://github.com/j-hui/fidget.nvim.git"},
 
 	--Cosmetic
 		--icons
@@ -69,8 +79,14 @@ vim.pack.add({
 	{src = "https://github.com/ellisonleao/gruvbox.nvim.git"},
 		--git-signs
 	{src = "https://github.com/lewis6991/gitsigns.nvim.git"},
-	{src = "https://github.com/folke/flash.nvim.git"},
+	{src = "https://github.com/nvim-mini/mini.surround.git"},
+
+	{src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git"},
+
+	--Fun
+	{src = "https://github.com/Eandrju/cellular-automaton.nvim.git"},
 })
+
 
 require("nvim-autopairs").setup()
 require("mason").setup()
@@ -79,8 +95,29 @@ require("fzf-lua").setup()
 require("nvim-highlight-colors").setup()
 require("nvim-treesitter").setup()
 require("gitsigns").setup()
+require("mini.surround").setup()
+require("fidget").setup()
+
+
+ftypes = {'cpp', 'javascript', 'lua', "java"}
+
+require("nvim-treesitter").setup()
+require("nvim-treesitter").install(langs)
+
+vim.o.syntax = off
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = langs,
+  callback = function() 
+	  	vim.treesitter.start() 
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+		vim.wo[0][0].foldmethod = 'expr'
+  end,
+})
+
+
 require("flash").setup()
-require("flash").treesitter()
 
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
@@ -99,9 +136,49 @@ require("gruvbox").setup({
 	transparent_mode = false
 })
 
-vim.lsp.enable({"rust_analyzer", "clangd", "intelephense", "ts_ls", "html", "cssls"})
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "■",
+		source = "if_many",
+		spacing = 4,
+	},
+	float = {
+		focusable = false,
+		border = "rounded",
+		source = "always"
+	}
+})
+
+vim.lsp.enable({"jdtls", "rust_analyzer", "clangd", "intelephense", "ts_ls", "html", "cssls"})
 
 vim.cmd("set background=dark")
 vim.cmd("colorscheme gruvbox")
 
 vim.cmd[[set completeopt+=menuone,noselect,popup]]
+
+vim.keymap.set({ "x", "o" }, "af", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+end)
+
+vim.keymap.set({ "x", "o" }, "if", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+end)
+
+vim.keymap.set({ "x", "o" }, "ac", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects")
+end)
+
+vim.keymap.set({ "x", "o" }, "ic", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects")
+end)
+
+-- You can also use captures from other query groups like `locals.scm`
+vim.keymap.set({ "x", "o" }, "as", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@local.scope", "locals")
+end) 
+
+vim.keymap.set("n", "<leader>a", function()
+  require("nvim-treesitter-textobjects.swap").swap_next "@function.outer"
+end)
+
+vim.keymap.set("n", "zf", function() require("flash").jump() end )
