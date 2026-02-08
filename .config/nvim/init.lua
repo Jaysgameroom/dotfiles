@@ -102,17 +102,15 @@ require("fidget").setup()
 ftypes = {'cpp', 'javascript', 'lua', "java"}
 
 require("nvim-treesitter").setup()
-require("nvim-treesitter").install(langs)
+require("nvim-treesitter").install(ftypes)
 
 vim.o.syntax = off
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = langs,
+  pattern = ftypes,
   callback = function() 
 	  	vim.treesitter.start() 
 		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-		vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-		vim.wo[0][0].foldmethod = 'expr'
   end,
 })
 
