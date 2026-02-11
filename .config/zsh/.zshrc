@@ -2,7 +2,7 @@ HISTFILE=$XDG_CACHE_HOME/zsh/zsh_history HISTSIZE=10000
 SAVEHIST=10000
 
 
-setopt autocd beep extendedglob nomatch notify
+setopt autocd beep extendedglob nomatch notify CORRECT``
 bindkey -v
 
 autoload -Uz compinit
