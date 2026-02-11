@@ -12,7 +12,6 @@ vim.g.mapleader = ' '
 
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 vim.keymap.set('n', '<leader>ma', ':update<CR> :make<CR>')
-vim.keymap.set('n', '<leader>f', ':FzfLua files<CR>')
 vim.keymap.set('n', '<leader>mm', ':Mason<CR>')
 vim.keymap.set('n', '<leader>c', ':close<CR>')
 vim.keymap.set('n', '<leader>s', ':split<CR>')
@@ -25,8 +24,16 @@ vim.keymap.set('n', '<leader>rain', ':CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>scram', ':CellularAutomaton scramble<CR>')
 vim.keymap.set('n', '<leader>~', ':e ~/code<CR>')
 
-vim.keymap.set('n', '<leader>1', ':colorscheme gruvbox<CR>')
-vim.keymap.set('n', '<leader>9', ':colorscheme vscode<CR>')
+vim.keymap.set('n', '<leader>f1', ':FzfLua files cwd=~/.config<CR>')
+vim.keymap.set('n', '<leader>f2', ':FzfLua files cwd=~/code<CR>')
+vim.keymap.set('n', '<leader>fo', ':FzfLua oldfiles<CR>')
+vim.keymap.set('n', '<leader>fg', ':FzfLua git_files<CR>')
+vim.keymap.set('n', '<leader>fgr', ':FzfLua live_grep<CR>')
+vim.keymap.set('n', '<leader>ff', ':FzfLua resume<CR>')
+vim.keymap.set('n', '<leader>fh', ':FzfLua helptags<CR>')
+
+vim.keymap.set('n', '<leader>-', ':colorscheme gruvbox<CR>')
+vim.keymap.set('n', '<leader>=', ':colorscheme vscode<CR>')
 
 
 
@@ -95,6 +102,10 @@ require("neoscroll").setup({
 	duration_multiplier = 0.3
 })
 
+require("gruvbox").setup({
+	contrast = ""
+})
+
 
 local ai = require('mini.ai').gen_spec
 
@@ -161,7 +172,7 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-		vim.highlight.on_yank({timeout=10})
+		vim.highlight.on_yank({timeout=15})
   end,
 })
 
