@@ -8,17 +8,9 @@
       "rev": "1606e9d5d04ff254023c3f3c62842d065708d6d3",
       "src": "https://github.com/Eandrju/cellular-automaton.nvim.git"
     },
-    "everforest": {
-      "rev": "b03a03148c8b34c24c96960b93da9c8883d11f54",
-      "src": "https://github.com/sainnhe/everforest.git"
-    },
     "fidget.nvim": {
       "rev": "7fa433a83118a70fe24c1ce88d5f0bd3453c0970",
       "src": "https://github.com/j-hui/fidget.nvim.git"
-    },
-    "flash.nvim": {
-      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
-      "src": "https://github.com/folke/flash.nvim.git"
     },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
@@ -32,33 +24,29 @@
       "rev": "1ce96a464fdbc24208e24c117e2021794259005d",
       "src": "https://github.com/lewis6991/gitsigns.nvim.git"
     },
-    "gruvbox": {
-      "rev": "697c00291db857ca0af00ec154e5bd514a79191f",
-      "src": "https://github.com/morhetz/gruvbox"
-    },
-    "gruvbox-material": {
-      "rev": "790afe9dd085aa04eccd1da3626c5fa05c620e53",
-      "src": "https://github.com/sainnhe/gruvbox-material.git"
-    },
     "gruvbox.nvim": {
       "rev": "a472496e1a4465a2dd574389dcf6cdb29af9bf1b",
       "src": "https://github.com/ellisonleao/gruvbox.nvim.git"
-    },
-    "hardtime.nvim": {
-      "rev": "b4e431934af1fe224a3a801f632c008278cb7628",
-      "src": "https://github.com/m4xshen/hardtime.nvim.git"
-    },
-    "kanagawa.nvim": {
-      "rev": "aef7f5cec0a40dbe7f3304214850c472e2264b10",
-      "src": "https://github.com/rebelot/kanagawa.nvim.git"
     },
     "markdown-preview.nvim": {
       "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
       "src": "https://github.com/iamcco/markdown-preview.nvim.git"
     },
+    "mason-lspconfig.nvim": {
+      "rev": "ae609525ddf01c153c39305730b1791800ffe4fe",
+      "src": "https://github.com/mason-org/mason-lspconfig.nvim.git"
+    },
     "mason.nvim": {
       "rev": "44d1e90e1f66e077268191e3ee9d2ac97cc18e65",
       "src": "https://github.com/mason-org/mason.nvim.git"
+    },
+    "mini.ai": {
+      "rev": "9eae720f2b20f6ad28cbfa0ddc524e10dc2c3201",
+      "src": "https://github.com/nvim-mini/mini.ai.git"
+    },
+    "mini.animate": {
+      "rev": "0365de8b69331c25d0d0d7573407a7dc7719e578",
+      "src": "https://github.com/nvim-mini/mini.animate.git"
     },
     "mini.icons": {
       "rev": "efc85e42262cd0c9e1fdbf806c25cb0be6de115c",
@@ -68,21 +56,9 @@
       "rev": "d648a5601e1c48f175b07d10eba141da338a0a2a",
       "src": "https://github.com/nvim-mini/mini.surround.git"
     },
-    "monokai.nvim": {
-      "rev": "b8bd44d5796503173627d7a1fc51f77ec3a08a63",
-      "src": "https://github.com/tanvirtin/monokai.nvim.git"
-    },
     "neoscroll.nvim": {
       "rev": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8",
       "src": "https://github.com/karb94/neoscroll.nvim.git"
-    },
-    "nord.nvim": {
-      "rev": "80c1e5321505aeb22b7a9f23eb82f1e193c12470",
-      "src": "https://github.com/shaunsingh/nord.nvim.git"
-    },
-    "nvim": {
-      "rev": "beaf41a30c26fd7d6c386d383155cbd65dd554cd",
-      "src": "https://github.com/catppuccin/nvim.git"
     },
     "nvim-autopairs": {
       "rev": "59bce2eef357189c3305e25bc6dd2d138c1683f5",
@@ -116,25 +92,9 @@
       "rev": "f55b25e493a7df76371cfadd0ded5004cb9cd48a",
       "src": "https://github.com/stevearc/oil.nvim.git"
     },
-    "onedark.vim": {
-      "rev": "47bec7a6196a843dad195d2666c3ac84c6e80c78",
-      "src": "https://github.com/joshdick/onedark.vim.git"
-    },
     "render-markdown.nvim": {
       "rev": "48b4175dbca8439d30c1f52231cbe5a712c8f9d9",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim.git"
-    },
-    "tokyonight.nvim": {
-      "rev": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd",
-      "src": "https://github.com/folke/tokyonight.nvim.git"
-    },
-    "trouble.nvim": {
-      "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
-      "src": "https://github.com/folke/trouble.nvim.git"
-    },
-    "vague.nvim": {
-      "rev": "c1ab4d4891ff3a27deba6a80222d895ac8ffb2e5",
-      "src": "https://github.com/vague-theme/vague.nvim.git"
     },
     "vscode.nvim": {
       "rev": "aa1102a7e15195c9cca22730b09224a7f7745ba8",
