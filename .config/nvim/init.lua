@@ -23,10 +23,12 @@ vim.keymap.set('n', '<leader>`', ':e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>rain', ':CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>scram', ':CellularAutomaton scramble<CR>')
 vim.keymap.set('n', '<leader>~', ':e ~/code<CR>')
+vim.keymap.set('n', '<leader>tt', ':Triforce profile<CR>')
 
 vim.keymap.set('n', '<leader>f1', ':FzfLua files cwd=~/.config<CR>')
 vim.keymap.set('n', '<leader>f2', ':FzfLua files cwd=~/code<CR>')
 vim.keymap.set('n', '<leader>fo', ':FzfLua oldfiles<CR>')
+vim.keymap.set('n', '<leader>fc', ':FzfLua lsp_code_actions<CR>')
 vim.keymap.set('n', '<leader>fg', ':FzfLua git_files<CR>')
 vim.keymap.set('n', '<leader>fgr', ':FzfLua live_grep<CR>')
 vim.keymap.set('n', '<leader>ff', ':FzfLua resume<CR>')
@@ -84,6 +86,9 @@ vim.pack.add({
 
 	--Fun
 	{src = "https://github.com/Eandrju/cellular-automaton.nvim.git"},
+	{src = "https://github.com/gisketch/triforce.nvim.git"},
+	{src = "https://github.com/nvzone/volt.git"},
+	{src = "https://github.com/nvzone/typr.git"},
 })
 
 
@@ -97,6 +102,8 @@ require("gitsigns").setup()
 require("mini.surround").setup()
 require("fidget").setup()
 require("nvim-ts-autotag").setup()
+require("triforce").setup()
+
 
 require("neoscroll").setup({
 	duration_multiplier = 0.3
