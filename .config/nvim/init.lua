@@ -10,7 +10,7 @@ vim.o.ignorecase = true
 vim.o.scrolloff = 2
 vim.g.mapleader = ' '
 
-vim.keymap.set('n', '<leader>w', ':write<CR>')
+vim.keymap.set('n', '<leader>w', ':update<CR>')
 vim.keymap.set('n', '<leader>ma', ':update<CR> :make<CR>')
 vim.keymap.set('n', '<leader>mm', ':Mason<CR>')
 vim.keymap.set('n', '<leader>c', ':close<CR>')
@@ -23,7 +23,10 @@ vim.keymap.set('n', '<leader>`', ':e ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>rain', ':CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>scram', ':CellularAutomaton scramble<CR>')
 vim.keymap.set('n', '<leader>~', ':e ~/code<CR>')
+
 vim.keymap.set('n', '<leader>tt', ':Triforce profile<CR>')
+vim.keymap.set('n', '<leader>tr', ':Typr<CR>')
+
 
 vim.keymap.set('n', '<leader>f1', ':FzfLua files cwd=~/.config<CR>')
 vim.keymap.set('n', '<leader>f2', ':FzfLua files cwd=~/code<CR>')
@@ -185,6 +188,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 
 
+vim.keymap.set('n', '<leader>gp', require"gitsigns".preview_hunk_inline)
+vim.keymap.set('n', '<leader>gr', require"gitsigns".reset_hunk)
 
 vim.cmd("set background=dark")
 vim.cmd("colorscheme gruvbox")
