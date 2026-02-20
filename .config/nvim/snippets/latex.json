@@ -2,14 +2,15 @@
   "doc": {
 	  "body" : [
 	  "\\\\documentclass{article}",
-	  "",
+	  "$0",
 	  "\\\\date{$CURRENT_DAY_NAME_SHORT $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE}",
 	  "\\\\author{Josiah Ricketts}",
 	  "\\\\title{$1}",
 	  "",
 	  "\\\\begin{document}",
 	  "\\\\maketitle",
-	  "$0",
+	  "",
+	  "",
 	  "",
 	  "\\\\end{document}"
 	],
@@ -18,7 +19,7 @@
   },
   "inline math": {
 	  "body" : [
-		  "\\$ $0 \\$"
+		  "\\$ $1 \\$$0"
 	],
     "prefix": "im",
 	"description": "Inline Math"
@@ -26,8 +27,8 @@
   "display math": {
 	  "body" : [
 		  "\\\\[",
-		  "$0",
-		  "\\\\]"
+		  "\t$1",
+		  "\\\\]$1"
 	],
 
     "prefix": "dm",
@@ -40,6 +41,58 @@
 
     "prefix": "fra",
 	"description": "fraction"
+  },
+  "cicuit`": {
+	  "body" : [
+		  "to [$1,$2] ($3,$4)",
+		  "$0"
+	],
+
+    "prefix": "to",
+	"description": "subscript"
+  },
+  "circuitikz": {
+	  "body" : [
+		  "\\\\begin{center}",
+		  "\\\\begin{circuitikz}[american voltages]",
+		  "",
+		  "\\\\draw",
+		  "\t(0,0) to [$1,$2] ($3,$4)",
+		  "\t$0",
+		  "",
+		  "\\\\end{circuitikz}",
+		  "\\\\end{center}"
+	],
+
+    "prefix": "dra",
+	"description": "subscript"
+  },
+  "line": {
+	  "body" : [
+		  "\\\\draw ($1,$2) -- ($3,$4);",
+		  "$0"
+	],
+
+    "prefix": "lin",
+	"description": "subscript"
+  },
+  "circle": {
+	  "body" : [
+		  "\\\\draw ($1,$2) circle ($3pt);",
+		  "$0"
+	],
+
+    "prefix": "cir",
+	"description": "subscript"
+  },
+  "dline": {
+	  "body" : [
+		  "\\\\draw [$1] ($2,$3) -- ($4,$5);",
+		  "$0"
+	],
+
+    "prefix": "lind",
+	"description": "subscript"
   }
 }
 

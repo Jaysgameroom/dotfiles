@@ -204,8 +204,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.g.vimtex_view_method = 'zathura'
-vim.g.vimtex_cvompiler_latexmk = {
+vim.g.vimtex_view_method = "skim"
+vim.g.vimtex_compiler_latexmk = {
 	options = {
 		'-synctex=0'
 	}
