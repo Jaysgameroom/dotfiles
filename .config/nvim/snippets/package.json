@@ -1,8 +1,11 @@
 {
-  "name": "personal-snippets",
+  "name": "my-snippets",
   "contributes": {
     "snippets": [
-      { "language": "cpp", "path": "./cpp.json" }
+      { "language": "all", "path": "./all.json" },
+      { "language": "cpp", "path": "./cpp.json" },
+      { "language": "tex", "path": "./latex.json" }
+
     ]
   }
 }

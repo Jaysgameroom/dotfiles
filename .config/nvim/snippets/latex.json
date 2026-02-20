@@ -1,0 +1,22 @@
+{
+  "doc": {
+	  "body" : [
+	  "\\documentclass{article}",
+	  "",
+	  "\\date{$CURRENT_DAY_NAME_SHORT $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE}",
+	  "\\authour{Josiah Ricketts}",
+	  "\\title{$1}",
+	  "",
+	  "\\begin{document}",
+	  "\\maketitle",
+	  "$0",
+	  "",
+	  "\\end{document}"
+	],
+    "prefix": "doc",
+	"description": "Starter template"
+  }
+}
+
+
+
