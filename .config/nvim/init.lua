@@ -196,7 +196,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-
+vim.g.vimtex_view_method = 'zathura'
 
 vim.keymap.set('n', '<leader>gp', require"gitsigns".preview_hunk_inline)
 vim.keymap.set('n', '<leader>gr', require"gitsigns".reset_hunk)
