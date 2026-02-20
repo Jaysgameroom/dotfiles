@@ -27,6 +27,8 @@ vim.keymap.set('n', '<leader>~', ':e ~/code<CR>')
 vim.keymap.set('n', '<leader>tt', ':Triforce profile<CR>')
 vim.keymap.set('n', '<leader>tr', ':Typr<CR>')
 
+vim.keymap.set('n', '<leader>1', "`1")
+vim.keymap.set('n', '<leader>2', "'2")
 
 vim.keymap.set('n', '<leader>f1', ':FzfLua files cwd=~/.config<CR>')
 vim.keymap.set('n', '<leader>f2', ':FzfLua files cwd=~/code<CR>')
@@ -92,6 +94,7 @@ vim.pack.add({
 	{src = "https://github.com/gisketch/triforce.nvim.git"},
 	{src = "https://github.com/nvzone/volt.git"},
 	{src = "https://github.com/nvzone/typr.git"},
+	{src = "https://github.com/lervag/vimtex.git"},
 })
 
 
@@ -127,17 +130,18 @@ require('mini.ai').setup({
 			i = { '@conditional.inner', '@loop.inner' },
 		}),
 		c = ai.treesitter({ a = "@class.outer", i = "@class.inner"}),
+		p = ai.treesitter({ a = "@parameter.outer", i = "@parameter.inner"}),
 		u = ai.function_call()
 
 	}
 })
 
 require("mason-lspconfig").setup({
-	ensure_installed = {"lua_ls", "clangd", "ts_ls", "hyprls"}
+	ensure_installed = {"texlab", "html", "lua_ls", "clangd", "ts_ls", "hyprls"}
 })
 
 
-local ftypes = {'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
+local ftypes = {'latex', 'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
 
 
 vim.o.syntax = off
@@ -179,6 +183,12 @@ vim.diagnostic.config({
 	}
 })
 
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+		vim.highlight.on_yank({timeout=15})
+  end,
+})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
