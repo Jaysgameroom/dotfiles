@@ -45,6 +45,7 @@ vim.keymap.set('n', '<leader>=', ':colorscheme vscode<CR>')
 
 
 
+
 vim.pack.add({
 
 	--Navigation
@@ -150,9 +151,16 @@ require("nvim-treesitter").setup()
 require("nvim-treesitter").install(ftypes)
 
 require("blink.cmp").setup({
-	keymap = {preset = "super-tab"},
+	keymap = {preset = "default"},
 	fuzzy = {implementation = "lua"},
+	snippets = {preset = "default"},
+	completion = {
+		trigger = {
+			show_in_snippet = false,
+		}
+	}
 })
+
 
 require("mini.icons").setup({
 	directory = {
@@ -197,6 +205,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.g.vimtex_view_method = 'zathura'
+vim.g.vimtex_cvompiler_latexmk = {
+	options = {
+		'-synctex=0'
+	}
+}
 
 vim.keymap.set('n', '<leader>gp', require"gitsigns".preview_hunk_inline)
 vim.keymap.set('n', '<leader>gr', require"gitsigns".reset_hunk)
@@ -204,5 +217,4 @@ vim.keymap.set('n', '<leader>gr', require"gitsigns".reset_hunk)
 vim.cmd("set background=dark")
 vim.cmd("colorscheme gruvbox")
 
-vim.cmd[[set completeopt+=menuone,noselect,popup]]
 

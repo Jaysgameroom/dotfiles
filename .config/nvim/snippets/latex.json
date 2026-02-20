@@ -1,20 +1,45 @@
 {
   "doc": {
 	  "body" : [
-	  "\\documentclass{article}",
+	  "\\\\documentclass{article}",
 	  "",
-	  "\\date{$CURRENT_DAY_NAME_SHORT $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE}",
-	  "\\authour{Josiah Ricketts}",
-	  "\\title{$1}",
+	  "\\\\date{$CURRENT_DAY_NAME_SHORT $CURRENT_MONTH_NAME_SHORT $CURRENT_DATE}",
+	  "\\\\author{Josiah Ricketts}",
+	  "\\\\title{$1}",
 	  "",
-	  "\\begin{document}",
-	  "\\maketitle",
+	  "\\\\begin{document}",
+	  "\\\\maketitle",
 	  "$0",
 	  "",
-	  "\\end{document}"
+	  "\\\\end{document}"
 	],
     "prefix": "doc",
 	"description": "Starter template"
+  },
+  "inline math": {
+	  "body" : [
+		  "\\$ $0 \\$"
+	],
+    "prefix": "im",
+	"description": "Inline Math"
+  },
+  "display math": {
+	  "body" : [
+		  "\\\\[",
+		  "$0",
+		  "\\\\]"
+	],
+
+    "prefix": "dm",
+	"description": "Display math"
+  },
+  "fraction": {
+	  "body" : [
+		  "\\\\frac{$1}{$0}"
+	],
+
+    "prefix": "//",
+	"description": "fraction"
   }
 }
 
