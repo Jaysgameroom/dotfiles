@@ -151,20 +151,17 @@ require("nvim-treesitter").setup()
 require("nvim-treesitter").install(ftypes)
 
 require("blink.cmp").setup({
-	keymap = {preset = "super-tab"},
+	keymap = {preset = "default"},
 	fuzzy = {implementation = "lua"},
 	snippets = {preset = "default"},
 	completion = {
-		trigger = {
-			show_in_snippet = false,
-		}
 	}
 })
 
 
 require("mini.icons").setup({
 	directory = {
-		downloads = {glyph = '󰉍', hl = 'MiniIconsOrange'},
+		downloads = {glyph = '', hl = 'MiniIconsOrange'},
 		music = {glyph = '󱍙', hl = 'MiniIconsOrange'}
 	}
 })
@@ -205,6 +202,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.g.vimtex_view_method = "skim"
+vim.g.vimtex_impas_enabled = 0
 vim.g.vimtex_compiler_latexmk = {
 	options = {
 		'-synctex=0'
