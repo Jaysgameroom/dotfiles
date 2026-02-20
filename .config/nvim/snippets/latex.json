@@ -35,10 +35,10 @@
   },
   "fraction": {
 	  "body" : [
-		  "\\\\frac{$1}{$0}"
+		  "\\\\frac{$1}{$2}$0"
 	],
 
-    "prefix": "//",
+    "prefix": "fra",
 	"description": "fraction"
   }
 }

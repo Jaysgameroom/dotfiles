@@ -151,7 +151,7 @@ require("nvim-treesitter").setup()
 require("nvim-treesitter").install(ftypes)
 
 require("blink.cmp").setup({
-	keymap = {preset = "default"},
+	keymap = {preset = "super-tab"},
 	fuzzy = {implementation = "lua"},
 	snippets = {preset = "default"},
 	completion = {
