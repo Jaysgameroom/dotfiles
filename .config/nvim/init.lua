@@ -112,6 +112,8 @@ require("fidget").setup()
 require("nvim-ts-autotag").setup()
 require("triforce").setup()
 
+require("luasnip").setup({enable_autosnippets = true})
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets/"})
 
 require("neoscroll").setup({
 	duration_multiplier = 0.3
@@ -148,7 +150,7 @@ require("nvim-treesitter").install(ftypes)
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
 	fuzzy = {implementation = "lua"},
-	snippets = {preset = "default"},
+	snippets = {preset = "luasnip"},
 	completion = {
 		trigger = {
 			show_in_snippet = false
@@ -199,7 +201,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.g.vimtex_view_method = "skim"
+vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_impas_enabled = 0
 vim.g.vimtex_compiler_latexmk = {
 	options = {
@@ -213,4 +215,5 @@ vim.keymap.set('n', '<leader>gr', require"gitsigns".reset_hunk)
 vim.cmd("set background=dark")
 vim.cmd("colorscheme gruvbox")
 
+vim.keymap.set("i", "<C-K>", function() require("luasnip").change_choice(1) end)
 
