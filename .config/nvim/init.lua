@@ -55,7 +55,6 @@ vim.pack.add({
 	{src = "https://github.com/ibhagwan/fzf-lua.git"},
 		--text objects
 	{src = "https://github.com/nvim-mini/mini.ai.git"},
-	{src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git"},
 
 	--Editing
 		--autocomplete
@@ -63,28 +62,31 @@ vim.pack.add({
 		--autpairs
 	{src = "https://github.com/windwp/nvim-autopairs.git"},
 	{src = "https://github.com/windwp/nvim-ts-autotag.git"},
+		--surround
+	{src = "https://github.com/nvim-mini/mini.surround.git"},
+		--snippets
+	{src = "https://github.com/L3MON4D3/LuaSnip.git"},
 
 	--Parsing
 		--lsp
 	{src = "https://github.com/mason-org/mason.nvim.git"},
 	{src = "https://github.com/neovim/nvim-lspconfig.git"},
 	{src = "https://github.com/mason-org/mason-lspconfig.nvim.git"},
+	{src = "https://github.com/j-hui/fidget.nvim.git"},
 		--treesitter
 	{src = "https://github.com/nvim-treesitter/nvim-treesitter.git"},
-
-	{src = "https://github.com/j-hui/fidget.nvim.git"},
+	{src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git"},
 
 	--Cosmetic
 		--icons
 	{src = "https://github.com/nvim-mini/mini.icons.git"},
 		--color highlighting
 	{src = "https://github.com/brenoprata10/nvim-highlight-colors.git"},
-
+		--colorschemes
 	{src = "https://github.com/ellisonleao/gruvbox.nvim.git"},
-	{src = "https://github.com/Mofiqul/vscode.nvim.git"},
+	{src = "https://github.com/Mofiqul/vscode.nvim.git"}, --cause its funny
 		--git-signs
 	{src = "https://github.com/lewis6991/gitsigns.nvim.git"},
-	{src = "https://github.com/nvim-mini/mini.surround.git"},
 		--markdown
 	{src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git"},
 		--animation
@@ -94,7 +96,6 @@ vim.pack.add({
 	{src = "https://github.com/Eandrju/cellular-automaton.nvim.git"},
 	{src = "https://github.com/gisketch/triforce.nvim.git"},
 	{src = "https://github.com/nvzone/volt.git"},
-	{src = "https://github.com/nvzone/typr.git"},
 	{src = "https://github.com/lervag/vimtex.git"},
 })
 
@@ -116,11 +117,6 @@ require("neoscroll").setup({
 	duration_multiplier = 0.3
 })
 
-require("gruvbox").setup({
-	contrast = ""
-})
-
-
 local ai = require('mini.ai').gen_spec
 
 require('mini.ai').setup({
@@ -130,15 +126,14 @@ require('mini.ai').setup({
 			a = { '@conditional.outer', '@loop.outer' },
 			i = { '@conditional.inner', '@loop.inner' },
 		}),
-		c = ai.treesitter({ a = "@class.outer", i = "@class.inner"}),
 		p = ai.treesitter({ a = "@parameter.outer", i = "@parameter.inner"}),
-		u = ai.function_call()
+		c = ai.function_call()
 
 	}
 })
 
 require("mason-lspconfig").setup({
-	ensure_installed = {"texlab", "html", "lua_ls", "clangd", "ts_ls", "hyprls"}
+	ensure_installed = {"rust_analyzer", "texlab", "html", "lua_ls", "clangd", "ts_ls", "hyprls"}
 })
 
 
@@ -151,17 +146,20 @@ require("nvim-treesitter").setup()
 require("nvim-treesitter").install(ftypes)
 
 require("blink.cmp").setup({
-	keymap = {preset = "default"},
+	keymap = {preset = "super-tab"},
 	fuzzy = {implementation = "lua"},
 	snippets = {preset = "default"},
 	completion = {
+		trigger = {
+			show_in_snippet = false
+		}
 	}
 })
 
 
 require("mini.icons").setup({
 	directory = {
-		downloads = {glyph = '', hl = 'MiniIconsOrange'},
+		downloads = {glyph = '󰉍', hl = 'MiniIconsOrange'},
 		music = {glyph = '󱍙', hl = 'MiniIconsOrange'}
 	}
 })
@@ -191,7 +189,7 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-		vim.highlight.on_yank({timeout=15})
+		vim.highlight.on_yank({higroup="Seach", timeout=15})
   end,
 })
 
