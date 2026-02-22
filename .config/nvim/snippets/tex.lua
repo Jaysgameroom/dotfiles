@@ -19,12 +19,11 @@ return {}, {
 		})),
 	s("dm", fmt("\\[\n \t{} \n\\]", {i(1)} )),
 	s("im", fmt("${}$", {i(1)} )),
-	s("int", c(1, {
-		fmt("\\int_{{{}}}^{{{}}}", {i(1), i(2)}),
-		fmt("\\int", {})
-	})),
 	s("sn", fmt("\\sin", {})),
 	s("cs", fmt("\\cos", {})),
-	s({regTrig=true,trig="(%d+)/(%d+)"}, f(function(_, snip) return "\\frac{" .. snip.captures[1] .. "}{" .. snip.captures[2] .."}" end)),
+	s({regTrig=true,trig="(%S+)/(%S+)"}, c(1, {
+		f(function(_, snip) return "\\frac{" .. snip.captures[1] .. "}{" .. snip.captures[2] .."}" end),
+		f(function(_, snip) return "\\int_{" .. snip.captures[1] .. "}^{" .. snip.captures[2] .."}" end)
+	})),
 
 }
