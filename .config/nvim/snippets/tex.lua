@@ -45,14 +45,14 @@ return {}, {
 	s("pic", fmt("\\begin{{tikzpicture}}\n\t{}\n\\end{{tikzpicture}}", {i(0)})),
 	--circuitikz
 	s("cuit", fmt([[
-	\begin{{circuitikz}}[american voltage]
+	\begin{{circuitikz}}[american]
 		{}
 	\end{{circuitikz}}
 	]], {i(1)})),
-	s("wire", fmt("{}to[{}] ({},{})", {
+	s("wire", fmt("{}to[{}] {}({},{})", {
 		c(1, {
 			t"",
-			sn(1,fmt("\\draw ({},{}) ", {i(1), i(2)}))
+			sn(1,fmt("\\draw ({},{}) ", {i(1, "0"), i(2, "0")}))
 		}),
 		c(2, {
 			sn(1, fmt("R=${}\\Omega$", i(1))),
@@ -62,8 +62,9 @@ return {}, {
 			sn(1, fmt("battery, v<=${}V$", i(1))),
 			sn(1, fmt("battery, v=${}V$", i(1))),
 		}),
-		i(3),
-		i(4)
+		c(3, {t"++", t""}),
+		i(4, "0"),
+		i(5, "0")
 	})),
 
 }
