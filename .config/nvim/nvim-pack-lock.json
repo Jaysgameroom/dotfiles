@@ -108,6 +108,10 @@
       "rev": "584e4ef34dea25a4035627794322f315b22d1253",
       "src": "https://github.com/nvzone/typr.git"
     },
+    "vim-floaterm": {
+      "rev": "0ab5eb8135dc884bc543a819ac7033c15e72a76b",
+      "src": "https://github.com/voldikss/vim-floaterm.git"
+    },
     "vimtex": {
       "rev": "95b93a24740f7b89dd8331326b41bdd1337d79f6",
       "src": "https://github.com/lervag/vimtex.git"

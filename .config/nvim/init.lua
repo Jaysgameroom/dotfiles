@@ -139,7 +139,7 @@ require("mason-lspconfig").setup({
 })
 
 
-local ftypes = {'latex', 'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
+local ftypes = {'rust', 'latex', 'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
 
 
 vim.o.syntax = off
