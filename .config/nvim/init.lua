@@ -1,53 +1,7 @@
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.tabstop = 4
-vim.o.swapfile = false
-vim.o.signcolumn = "yes"
-vim.o.shiftwidth= 4
-vim.o.wrap = false
-vim.o.wrapscan = true
-vim.o.ignorecase = true
-vim.o.scrolloff = 2
-vim.g.mapleader = ' '
-
-vim.keymap.set('n', '<leader>w', ':update<CR>')
-vim.keymap.set('n', '<leader>ma', ':update<CR> :make<CR>')
-vim.keymap.set('n', '<leader>mm', ':Mason<CR>')
-vim.keymap.set('n', '<leader>c', ':close<CR>')
-vim.keymap.set('n', '<leader>s', ':split<CR>')
-vim.keymap.set('n', '<leader>o', 'r:<CR>')
-vim.keymap.set('n', '<leader>e', ':Oil<CR>')
-vim.keymap.set('n', '<leader>q', ':quit<CR>')
-vim.keymap.set('n', '<leader>gs', ':update<CR> :source<CR>')
-vim.keymap.set('n', '<leader>`', ':e ~/.config/nvim/init.lua<CR>')
-vim.keymap.set('n', '<leader>rain', ':CellularAutomaton make_it_rain<CR>')
-vim.keymap.set('n', '<leader>scram', ':CellularAutomaton scramble<CR>')
-vim.keymap.set('n', '<leader>~', ':e ~/code<CR>')
-
-vim.keymap.set('n', '<leader>tt', ':Triforce profile<CR>')
-vim.keymap.set('n', '<leader>tr', ':Typr<CR>')
-
-vim.keymap.set('n', '<leader>1', "`1")
-vim.keymap.set('n', '<leader>2', "'2")
-
-vim.keymap.set('n', '<leader>f1', ':FzfLua files cwd=~/.config<CR>')
-vim.keymap.set('n', '<leader>f2', ':FzfLua files cwd=~/code<CR>')
-vim.keymap.set('n', '<leader>fo', ':FzfLua oldfiles<CR>')
-vim.keymap.set('n', '<leader>fc', ':FzfLua lsp_code_actions<CR>')
-vim.keymap.set('n', '<leader>fg', ':FzfLua git_files<CR>')
-vim.keymap.set('n', '<leader>fgr', ':FzfLua live_grep<CR>')
-vim.keymap.set('n', '<leader>ff', ':FzfLua resume<CR>')
-vim.keymap.set('n', '<leader>fh', ':FzfLua helptags<CR>')
-
-vim.keymap.set('n', '<leader>-', ':colorscheme gruvbox<CR>')
-vim.keymap.set('n', '<leader>=', ':colorscheme vscode<CR>')
-
-
-
-
+require("options")
+require("keymaps")
 
 vim.pack.add({
-
 	--Navigation
 		--file explorer
 	{src = "https://github.com/stevearc/oil.nvim.git"},
@@ -59,7 +13,7 @@ vim.pack.add({
 	--Editing
 		--autocomplete
 	{src = "https://github.com/saghen/blink.cmp.git"},
-		--autpairs
+		--autopairs
 	{src = "https://github.com/windwp/nvim-autopairs.git"},
 	{src = "https://github.com/windwp/nvim-ts-autotag.git"},
 		--surround
@@ -84,7 +38,6 @@ vim.pack.add({
 	{src = "https://github.com/brenoprata10/nvim-highlight-colors.git"},
 		--colorschemes
 	{src = "https://github.com/ellisonleao/gruvbox.nvim.git"},
-	{src = "https://github.com/Mofiqul/vscode.nvim.git"}, --cause its funny
 		--git-signs
 	{src = "https://github.com/lewis6991/gitsigns.nvim.git"},
 		--markdown
@@ -94,8 +47,6 @@ vim.pack.add({
 
 	--Fun
 	{src = "https://github.com/Eandrju/cellular-automaton.nvim.git"},
-	{src = "https://github.com/gisketch/triforce.nvim.git"},
-	{src = "https://github.com/nvzone/volt.git"},
 	{src = "https://github.com/lervag/vimtex.git"},
 })
 
@@ -110,8 +61,9 @@ require("gitsigns").setup()
 require("mini.surround").setup()
 require("fidget").setup()
 require("nvim-ts-autotag").setup()
-require("triforce").setup()
 
+require("luasnip").setup({enable_autosnippets = true})
+require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets/"})
 
 require("neoscroll").setup({
 	duration_multiplier = 0.3
@@ -133,11 +85,11 @@ require('mini.ai').setup({
 })
 
 require("mason-lspconfig").setup({
-	ensure_installed = {"rust_analyzer", "texlab", "html", "lua_ls", "clangd", "ts_ls", "hyprls"}
+	ensure_installed = {"rust_analyzer", "texlab", "html", "lua_ls", "clangd", "ts_ls", "hyprls", "qmlls"}
 })
 
 
-local ftypes = {'latex', 'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
+local ftypes = {'python', 'rust', 'latex', 'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
 
 
 vim.o.syntax = off
@@ -148,7 +100,7 @@ require("nvim-treesitter").install(ftypes)
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
 	fuzzy = {implementation = "lua"},
-	snippets = {preset = "default"},
+	snippets = {preset = "luasnip"},
 	completion = {
 		trigger = {
 			show_in_snippet = false
@@ -199,7 +151,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.g.vimtex_view_method = "skim"
+vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_impas_enabled = 0
 vim.g.vimtex_compiler_latexmk = {
 	options = {
@@ -213,4 +165,11 @@ vim.keymap.set('n', '<leader>gr', require"gitsigns".reset_hunk)
 vim.cmd("set background=dark")
 vim.cmd("colorscheme gruvbox")
 
+vim.keymap.set("i", "<C-K>", function() require("luasnip").change_choice(1) end)
 
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim", "hl" }}}}})
