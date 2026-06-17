@@ -9,4 +9,5 @@ vim.o.wrapscan = true
 vim.o.ignorecase = true
 vim.o.scrolloff = 2
 vim.g.mapleader = ' '
+vim.o.syntax = off
 
