@@ -65,6 +65,8 @@ require("nvim-ts-autotag").setup()
 require("luasnip").setup({enable_autosnippets = true})
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets/"})
 
+require("lsp")
+
 require("neoscroll").setup({
 	duration_multiplier = 0.3
 })
@@ -83,19 +85,6 @@ require('mini.ai').setup({
 
 	}
 })
-
-require("mason-lspconfig").setup({
-	ensure_installed = {"rust_analyzer", "texlab", "html", "lua_ls", "clangd", "ts_ls", "hyprls", "qmlls"}
-})
-
-
-local ftypes = {'python', 'rust', 'latex', 'cpp', 'javascript', 'html', 'css', 'php', 'lua', "java"}
-
-
-vim.o.syntax = off
-
-require("nvim-treesitter").setup()
-require("nvim-treesitter").install(ftypes)
 
 require("blink.cmp").setup({
 	keymap = {preset = "super-tab"},
@@ -116,13 +105,6 @@ require("mini.icons").setup({
 	}
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = ftypes,
-	callback = function()
-		vim.treesitter.start()
-		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-	end
-})
 
 
 vim.diagnostic.config({
@@ -168,8 +150,3 @@ vim.cmd("colorscheme gruvbox")
 vim.keymap.set("i", "<C-K>", function() require("luasnip").change_choice(1) end)
 
 
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { "vim", "hl" }}}}})

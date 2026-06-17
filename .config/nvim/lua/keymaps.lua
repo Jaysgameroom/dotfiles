@@ -1,4 +1,3 @@
-
 vim.keymap.set('n', '<leader>w', ':update<CR>')
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>q', ':quit<CR>')
@@ -16,10 +15,6 @@ vim.keymap.set('n', '<leader>fg', ':FzfLua git_files<CR>')
 vim.keymap.set('n', '<leader>fgr', ':FzfLua live_grep<CR>')
 vim.keymap.set('n', '<leader>ff', ':FzfLua resume<CR>')
 vim.keymap.set('n', '<leader>fh', ':FzfLua helptags<CR>')
-
---Colorscheme
-vim.keymap.set('n', '<leader>-', ':colorscheme gruvbox<CR>')
-vim.keymap.set('n', '<leader>=', ':colorscheme vscode<CR>')
 
 --CellularAutomaton
 vim.keymap.set('n', '<leader>rain', ':CellularAutomaton make_it_rain<CR>')
