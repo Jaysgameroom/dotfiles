@@ -40,10 +40,12 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
-hl.bind(mainMod .. " + M",         hl.dsp.workspace.toggle_special("media"))
-hl.bind(mainMod .. " + N",         hl.dsp.workspace.toggle_special("control"))
+hl.bind(mainMod .. " + M",         hl.dsp.workspace.toggle_special("Media"))
+hl.bind(mainMod .. " + N",         hl.dsp.workspace.toggle_special("Control"))
+hl.bind(mainMod .. " + O",         hl.dsp.workspace.toggle_special("Server"))
 hl.bind(mainMod .. " + G",         hl.dsp.focus({workspace = "name:Game"}))
 hl.bind(mainMod .. "+ SHIFT + G",  hl.dsp.window.move({workspace = "name:Game"}))
+
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
