@@ -40,10 +40,9 @@ hl.window_rule({
 hl.window_rule({
 	name = "transparent P-I-P",
 	match = {
-		initial_title = "Picture-in-Picture",
 		float = true,
 	},
-	opacity = "0.5"
+	opacity = "0.6"
 })
 
 hl.window_rule({

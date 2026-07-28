@@ -5,6 +5,8 @@ local mainMod = "SUPER"
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_right", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_left",   hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + mouse:275", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse:276", hl.dsp.focus({ workspace = "e+1" }))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
@@ -55,3 +57,14 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(Menu))
 
 hl.bind(mainMod .. "+ SHIFT + Q", hl.dsp.exec_cmd(Browser))
 hl.bind(mainMod .. "+ ALT + Q", hl.dsp.exec_cmd(Browser .. " --private-window"))
+
+
+hl.bind(mainMod .. " + right", hl.dsp.window.move({x = 50, y = 0, relative = true }), {repeating = true})
+hl.bind(mainMod .. " + up", hl.dsp.window.move({x = 0, y = -50, relative = true }), {repeating = true})
+hl.bind(mainMod .. " + left", hl.dsp.window.move({x = -50, y = 0, relative = true }), {repeating = true})
+hl.bind(mainMod .. " + down", hl.dsp.window.move({x = 0, y = 50, relative = true }), {repeating = true})
+hl.bind(mainMod .. " + minus", hl.dsp.focus({window = "floating"}))
+hl.bind(mainMod .. " + equal", hl.dsp.focus({window = "tiled"}))
+hl.bind(mainMod .. " + P", hl.dsp.window.pin())
+
+
